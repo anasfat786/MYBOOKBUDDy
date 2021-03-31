@@ -9,27 +9,21 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+@*<table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.ProductName)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MetaTitle)
-            </th>
+          
             <th>
                 @Html.DisplayNameFor(model => model.ProductSummery)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ProductDescription)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sku)
-            </th>
+            
+             
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
@@ -42,24 +36,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.IsAvailable)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PublishedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartsAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndsAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductPic)
-            </th>
+             
+          
             <th>
                 @Html.DisplayNameFor(model => model.Vendor)
             </th>
@@ -73,21 +51,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MetaTitle)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.ProductSummery)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ProductDescription)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sku)
-            </td>
+             
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
@@ -103,18 +74,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedAt)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PublishedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartsAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndsAt)
-            </td>
+             
+            
             <td>
                 @Html.DisplayFor(modelItem => item.ProductPic)
             </td>
@@ -132,4 +93,33 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card " style="height:400px">
+                <img src="@("/Images/"+item.ProductPic)" height="200" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"> @Html.DisplayFor(modelItem => item.ProductName)</h5>
+
+                    <h6 class="text-danger">  Price:   @Html.DisplayFor(modelItem => item.Price) Rs </h6>
+
+
+                    <p class="card-text " > <b> Product summary:</b>  @Html.DisplayFor(modelItem => item.ProductSummery)</p>
+                    
+                    <p>
+                        <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+         
+    }
+
+
+</div>
